@@ -15,6 +15,19 @@ baseURL = 'https://' + subdomain + '.zendesk.com/api/v2/tickets'
 def printTicketDetails(ticket):
     print('Ticket with subject \'' +
           ticket['subject'] + '\' opened by', ticket['requester_id'], 'on', ticket['created_at'])
+        
+def handleError(response):
+    if response.status_code == 404:
+        print("Sorry! Could not find requested ticket(s)")
+        return True
+    if response.status_code == 401:
+        print("Sorry! You have given incorrect credentials!")
+        return True
+    if 'error' in response.json():
+        print(response.json().get('error'))
+        return True
+    return False
+
 
 
 def getAllTickets():
@@ -24,7 +37,9 @@ def getAllTickets():
         response = requests.get(url, auth=HTTPBasicAuth(
             email, password))
 
-        # TODO: handle error response
+        # handle error response
+        if handleError(response):
+            return
         tickets = response.json()
 
         # print request object
@@ -48,7 +63,9 @@ def getATicket():
     response = requests.get(baseURL + "/" + ticketID + ".json", auth=HTTPBasicAuth(
         email, password))
 
-    # TODO: handle error response
+    # handle error response
+    if handleError(response):
+        return
 
     ticket = response.json()
     printTicketDetails(ticket['ticket'])
