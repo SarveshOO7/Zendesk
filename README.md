@@ -10,8 +10,8 @@ For Debian GNU/Linux distros like Ubuntu:
     Run the following commands
       
     sudo apt update
-    sudo apt install python3-pip
     sudo apt install python3.8
+    sudo apt install python3-pip
     pip install requests
     pip install -U pytest
    
