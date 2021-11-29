@@ -1,6 +1,6 @@
 from fetcher import getATicket
 
 
-def test():
+def testGetATicket():
     for i in range(1, 101):
         assert getATicket(str(i))

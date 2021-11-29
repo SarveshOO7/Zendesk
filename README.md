@@ -17,6 +17,7 @@ For Debian GNU/Linux distros like Ubuntu:
    
 
 ## Usage
+First put in your credentials in creds.py
 To run the program, run the following command in the terminal: `python3 main.py`
 <br>
 To run tests, run the following command in the terminal: `pytest test.py`
