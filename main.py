@@ -2,6 +2,7 @@
 from fetcher import getATicket, getAllTickets
 
 def CLI():
+    """Creates a main menu in CLI to run the program"""
     print("Welcome to the Ticket Viewer!\n")
 
 
