@@ -3,8 +3,6 @@ import requests
 from requests.models import HTTPBasicAuth
 import creds
 
-
-
 def printTicketDetails(ticket):
     print('Ticket with subject \'' +
           ticket['subject'] + '\' opened by', ticket['requester_id'], 'on', ticket['created_at'])
